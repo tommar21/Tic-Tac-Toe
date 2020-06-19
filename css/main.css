@@ -6,35 +6,140 @@
 
 body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#cont {
+    margin-left: 20px;
+    width: 20%;
 }
 
 #turno {
-    width: 300px;
     font-size: 20px;
+    color: #dfdbd9;
 }
 
 #quien {
     font-weight: bold;
-    color: red;
+    color: #4deeea;
 }
 
 #juego {
-    width: 300px;
+    width: 308px;
+    margin-bottom: 100px;
+    margin-left: 40%;
+}
+
+#ttt {
+    position: relative;
+    margin-bottom: 80px;
+    height: 100px;
+    text-align: center;
+}
+
+#ttt h1 {
+    margin: 5px;
+    font-size: 55px;
+    color: #FFFF00;
+    font-family: 'MuseoModerno', cursive;
+}
+
+#ttt svg {
+    display: block;
+}
+
+#ttt path {
+    animation-name: ttt;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes ttt {
+    100% {
+        stroke-dashoffset: -500;
+    }
+}
+
+.filas {
     display: flex;
-    flex-wrap: wrap;
+    position: relative;
+}
+
+.filas:nth-child(2) {
+    margin: 8px 0;
+}
+
+.filas:nth-child(3)::before,
+.filas:nth-child(3)::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 8px;
+    background-color: #dfdbd9;
+    border-radius: 10px;
+    animation-name: widthlines;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+}
+
+.filas:nth-child(3)::before {
+    top: -8px;
+    left: 0;
+}
+
+.filas:nth-child(3)::after {
+    bottom: -8px;
+    right: 0;
+}
+
+@keyframes widthlines {
+    100% {
+        width: 100%;
+    }
 }
 
 .celdas {
     width: 100px;
     height: 100px;
-    border: thin solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 70px;
-    font-weight: bold;
+    position: relative;
+}
+
+.filas .celdas:nth-child(2) {
+    margin: 0 8px;
+}
+
+.filas:nth-child(2) .celdas:nth-child(2)::before,
+.filas:nth-child(4) .celdas:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 0;
+    left: -8px;
+    background-color: #dfdbd9;
+    border-radius: 10px;
+    animation-name: heightlines;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.filas:nth-child(4) .celdas:nth-child(3)::before {
+    bottom: 0;
+}
+
+@keyframes heightlines {
+    100% {
+        height: 308%;
+    }
+}
+
+svg {
+    position: absolute;
+}
+
+path,
+circle {
+    transition: 0.6s;
 }
