@@ -9,6 +9,67 @@ body {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
+#choose {
+    background-color: #3c3735;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: transform 1s;
+}
+
+#choose h1 {
+    color: whitesmoke;
+    letter-spacing: 8px;
+    word-spacing: 40px;
+    font-family: 'Oswald', sans-serif;
+    width: 100%;
+    text-align: center;
+    font-size: 100px;
+}
+
+div.options {
+    color: #3c3735;
+    margin-top: -300px;
+    width: 200px;
+    line-height: 70px;
+    padding-top: 15px;
+    font-size: 5em;
+    font-weight: 600;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: 0.5s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.options:hover {
+    transform: scale(1.1);
+    z-index: 4;
+}
+
+#choose div:nth-child(2) {
+    background-color: rgba(240, 0, 255, 0.9);
+    clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 100% 0%);
+    padding-left: 25px;
+    margin-right: -50px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+#choose div:nth-child(3) {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: rgba(77, 238, 234, 0.9);
+    text-align: right;
+    padding-right: 25px;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%);
+    margin-left: -50px;
+}
+
 #cont {
     margin-left: 20px;
     width: 20%;
@@ -135,11 +196,181 @@ body {
     }
 }
 
-svg {
+svg:not(.svgfondo) {
     position: absolute;
 }
 
 path,
 circle {
     transition: 0.6s;
+}
+
+.divfondo {
+    position: absolute;
+}
+
+.svgfondo path,
+.svgfondo circle {
+    animation-iteration-count: infinite;
+}
+
+.equis1 {
+    animation-name: equis12;
+    animation-duration: 1.5s;
+    animation-direction: alternate-reverse;
+}
+
+.equis2 {
+    animation-name: equis12;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+
+.equis3 {
+    animation-name: equis3;
+    animation-duration: 2s;
+}
+
+.equis4 {
+    animation-name: equis4cir2;
+    animation-duration: 1.5s;
+    animation-direction: alternate-reverse;
+}
+
+.equis5 {
+    animation-name: equis5;
+    animation-duration: 2s;
+    animation-direction: alternate-reverse;
+}
+
+#circ1 {
+    animation-name: circ1;
+    animation-duration: 2s;
+    animation-direction: alternate-reverse;
+}
+
+#circ2 {
+    animation-name: equis4cir2;
+    animation-duration: 2s;
+    animation-direction: alternate-reverse;
+}
+
+#circ3 {
+    animation-name: circ3;
+    animation-duration: 1.5s;
+    animation-direction: alternate-reverse;
+}
+
+#circ4 {
+    animation-name: circ4;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+#circ5 {
+    animation-name: circ5;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+}
+
+@keyframes equis12 {
+    100% {
+        stroke-dashoffset: 120
+    }
+}
+
+@keyframes equis3 {
+    50% {
+        transform: translateX(-200px);
+    }
+}
+
+@keyframes equis4cir2 {
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes equis5 {
+    100% {
+        transform: translateY(200px);
+    }
+}
+
+@keyframes circ1 {
+    100% {
+        stroke-dashoffset: -313.6517333984375
+    }
+}
+
+@keyframes circ3 {
+    100% {
+        transform: translateY(-200px);
+    }
+}
+
+@keyframes circ4 {
+    100% {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes circ5 {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -313.6517333984375;
+    }
+}
+
+.divfondo:nth-child(4) {
+    top: 200px;
+    left: 100px;
+}
+
+.divfondo:nth-child(5) {
+    top: 100px;
+    right: 100px;
+}
+
+.divfondo:nth-child(6) {
+    bottom: 100px;
+    right: 200px;
+}
+
+.divfondo:nth-child(7) {
+    bottom: 150px;
+    left: 300px;
+}
+
+.divfondo:nth-child(8) {
+    top: 0px;
+    left: 500px;
+}
+
+.divfondo:nth-child(9) {
+    top: 150px;
+    left: 300px;
+}
+
+.divfondo:nth-child(10) {
+    top: 300px;
+    right: 0px;
+}
+
+.divfondo:nth-child(11) {
+    top: 450px;
+    right: 500px;
+}
+
+.divfondo:nth-child(12) {
+    top: 0px;
+    left: 50px;
+}
+
+.divfondo:nth-child(13) {
+    top: 50px;
+    right: 350px;
 }

@@ -1,6 +1,7 @@
 const celdas = document.getElementsByClassName('celdas');
 const equis = document.getElementsByClassName('equis');
 const circle = document.getElementsByClassName('circle');
+const choose = document.getElementById('choose');
 const xoxo = [
     [equis[0], equis[1], circle[0]],
     [equis[2], equis[3], circle[1]],
@@ -16,6 +17,17 @@ var ganador = null;
 var turno = 1;
 var quien = document.getElementById('quien');
 var titulo = document.getElementById('turno');
+var options = document.getElementsByClassName('options')
+var clickeado = "";
+
+
+for (let i = 0; i < options.length; i++) {
+    let select = 0
+    options[i].addEventListener('click', function (e) {
+        clickeado = e.target.id
+        choose.style.transform = "translateY(-100vh)";
+    })
+}
 
 for (let i = 0; i < celdas.length; i++) {
 
@@ -30,8 +42,13 @@ for (let i = 0; i < celdas.length; i++) {
             if (turno == 1 || turno == 3 || turno == 5 || turno == 7 || turno == 9) {
 
                 celdas[i].id = 'X'
-                xoxo[i][0].style.strokeDashoffset = '0'
-                xoxo[i][1].style.strokeDashoffset = '0'
+                if (clickeado == "clickx") {
+                    xoxo[i][0].style.strokeDashoffset = '0'
+                    xoxo[i][1].style.strokeDashoffset = '0'
+                }
+                else if (clickeado == "clicko") {
+                    xoxo[i][2].style.strokeDashoffset = '0'
+                }
                 quien.innerHTML = 'O'
                 quien.style.color = '#f000ff'
                 turno++
@@ -44,7 +61,13 @@ for (let i = 0; i < celdas.length; i++) {
             else if (turno == 2 || turno == 4 || turno == 6 || turno == 8) {
 
                 celdas[i].id = 'O'
-                xoxo[i][2].style.strokeDashoffset = '0'
+                if (clickeado == "clickx") {
+                    xoxo[i][2].style.strokeDashoffset = '0'
+                }
+                else if (clickeado == "clicko") {
+                    xoxo[i][0].style.strokeDashoffset = '0'
+                    xoxo[i][1].style.strokeDashoffset = '0'
+                }
                 quien.innerHTML = 'X'
                 quien.style.color = '#4deeea'
                 turno++
