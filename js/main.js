@@ -22,14 +22,23 @@ var clickeado = "";
 
 
 for (let i = 0; i < options.length; i++) {
-    let select = 0
     options[i].addEventListener('click', function (e) {
         clickeado = e.target.id
         choose.style.transform = "translateY(-100vh)";
+        if (clickeado == "clickx") {
+            quien.innerHTML = 'X'
+            quien.style.color = '#4deeea'
+        }
+        else if (clickeado == 'clicko') {
+            quien.innerHTML = 'O'
+            quien.style.color = '#f000ff'
+        }
     })
 }
 
+
 for (let i = 0; i < celdas.length; i++) {
+
 
     celdas[i].addEventListener('click', function () {
 
@@ -41,39 +50,48 @@ for (let i = 0; i < celdas.length; i++) {
 
             if (turno == 1 || turno == 3 || turno == 5 || turno == 7 || turno == 9) {
 
-                celdas[i].id = 'X'
                 if (clickeado == "clickx") {
+                    celdas[i].id = 'X'
+                    quien.innerHTML = 'O'
+                    quien.style.color = '#f000ff'
                     xoxo[i][0].style.strokeDashoffset = '0'
                     xoxo[i][1].style.strokeDashoffset = '0'
+                    ganador = detganador('X')
+                    turno++
                 }
-                else if (clickeado == "clicko") {
-                    xoxo[i][2].style.strokeDashoffset = '0'
-                }
-                quien.innerHTML = 'O'
-                quien.style.color = '#f000ff'
-                turno++
 
-                ganador = detganador('X')
+                else if (clickeado == "clicko") {
+                    celdas[i].id = 'O'
+                    quien.innerHTML = 'X'
+                    quien.style.color = '#4deeea'
+                    xoxo[i][2].style.strokeDashoffset = '0'
+                    ganador = detganador('O')
+                    turno++
+                }
             }
 
             //Si son turnos pares poner O
 
             else if (turno == 2 || turno == 4 || turno == 6 || turno == 8) {
 
-                celdas[i].id = 'O'
                 if (clickeado == "clickx") {
+                    celdas[i].id = 'O'
                     xoxo[i][2].style.strokeDashoffset = '0'
+                    quien.innerHTML = 'X'
+                    quien.style.color = '#4deeea'
+                    ganador = detganador('O')
+                    turno++
                 }
+
                 else if (clickeado == "clicko") {
+                    celdas[i].id = 'X'
                     xoxo[i][0].style.strokeDashoffset = '0'
                     xoxo[i][1].style.strokeDashoffset = '0'
+                    quien.innerHTML = 'O'
+                    quien.style.color = '#f000ff'
+                    ganador = detganador('X')
+                    turno++
                 }
-                quien.innerHTML = 'X'
-                quien.style.color = '#4deeea'
-                turno++
-
-                //Si ya ganó el O ponerlo de ganador
-                ganador = detganador('O')
             }
         }
         else {
